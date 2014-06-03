@@ -5,7 +5,16 @@ def is_unit(x,S):
     pass
 
 def is_unit_(x,S):
-    pass
+    if x==0: return False;    
+    d=x.denominator();
+    for s in S:
+        while d%s==0:
+            d/=s;
+    n=x.numerator();
+    for s in S:
+        while n%s==0:
+            n/=s;
+    return d==1 and (n==1 or n==-1)
 
 def units(S):
     pass
