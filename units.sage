@@ -1,5 +1,9 @@
 def prime_factors(N):
-    pass
+     F = N.factor()
+     S = []
+     for p in F:
+        S.append(p[0])
+     return S
 
 def is_unit(x,S):
     pass
