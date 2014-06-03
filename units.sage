@@ -1,20 +1,20 @@
 def prime_factors(N):
-	pass
+    pass
 
 def is_unit(x,S):
-	pass
+    pass
 
 def is_unit_(x,S):
-	pass
+    pass
 
 def units(S):
-	pass
+    pass
 
 def small_elements(n,G):
-	pass
+    pass
 			
 def to_unit(x,S):
-	pass
+    pass
 
 def small_solutions(n,S):
-	pass
+    pass
