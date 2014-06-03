@@ -4,6 +4,7 @@ def test_prime_factors():
     name = inspect.stack()[0][3]
     tester = sage.misc.sage_unittest.InstanceTester(name);
     tester.assertListEqual(prime_factors(-18),[2,3]);
+    tester.assertListEqual(prime_factors(-17),[17]);
     tester.assertListEqual(prime_factors(2*2*3*19),[2,3,19]);
     tester.assertListEqual(prime_factors(11*13*13*13),[11,13]);
     tester.assertListEqual(prime_factors(101*7*2^10),[2,7,101]);
