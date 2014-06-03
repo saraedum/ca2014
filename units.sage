@@ -1,11 +1,33 @@
 def prime_factors(N):
-    pass
+     F = N.factor()
+     S = []
+     for p in F:
+        S.append(p[0])
+     return S
 
 def is_unit(x,S):
-    pass
+    if x==0: return False
+    n=x.numerator()
+    H=prime_factors(n)
+    for p in H:
+        if p not in S: return False 
+    d=x.denominator()
+    F=prime_factors(d)
+    for p in F:
+        if p not in S: return False
+    return True
 
 def is_unit_(x,S):
-    pass
+    if x==0: return False;    
+    d=x.denominator();
+    for s in S:
+        while d%s==0:
+            d/=s;
+    n=x.numerator();
+    for s in S:
+        while n%s==0:
+            n/=s;
+    return d==1 and (n==1 or n==-1)
 
 def units(S):
     pass
