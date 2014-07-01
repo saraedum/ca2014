@@ -24,15 +24,20 @@ def test(K, x):
     
     return abs((1-u).norm())==1
 
-def find_solution(K, N_max):
+def find_solution(K, N_max, num_shortest_vectors):
     RF=RealField(10000)
-    l=[]
-    for sigma in K.embeddings(RF):
-        N=1
-        while N<=N_max:
+    UV = set()
+    N = 1
+    while N<=N_max:
+        found = 0
+        for sigma in K.embeddings(RF):
             L=lattice(K,sigma,N)
-            for s in L.shortest_vectors(100):
+            for s in L.shortest_vectors(num_shortest_vectors):
                 if test(K,s):
-                    l.append(l2k(K,s))
-            N*=2
-    return l;
+                    found += 1
+                    u = l2k(K,s)
+                    v = 1-u
+                    UV.add((u,v))
+        print "Found %s for N=%s"%(found,N)
+        N*=2
+    return UV;
