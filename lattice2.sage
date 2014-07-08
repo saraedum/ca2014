@@ -65,5 +65,6 @@ def findSolution(S, M, num_shortest_vectors):
                     ret.append((toRat(s,L_P),1-toRat(s,L_P)))
             print ""
     print "Found %s solutions."%len(ret)
-    largest = max(ret,key=lambda (u,v): max([e for p,e in u.factor()]+[e for p,e in v.factor()]))
-    print "Largest solution (%s) + (%s) = 1."%(largest[0].factor(),largest[1].factor())
+    if len(ret):
+       largest = max(ret,key=lambda (u,v): max([e for p,e in u.factor()]+[e for p,e in v.factor()]))
+       print "Largest solution (%s) + (%s) = 1."%(largest[0].factor(),largest[1].factor())
