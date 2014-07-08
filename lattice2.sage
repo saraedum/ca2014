@@ -24,15 +24,9 @@ def getVector(entry, posOf1, size):
     v[-1]=entry
     return v
 
-<<<<<<< HEAD
 def lattice(p,m,S):
     L=[getVector(S[i],i,S.len) for i in range(S.len+1)]+[getVector(p^m,S.len,S.len)]
     return IntegerLattice(L)
-=======
-def lattice(Ti_m):
-    pass
-
-
 
 def findSolution(S, M, num_shortest_vectors):
     L_P = []
@@ -43,10 +37,4 @@ def findSolution(S, M, num_shortest_vectors):
         L_P = maxPr(ZpCA_p, [q for q in S if q != p_i])
         Theta_i = theta_i(L_P)
 
-        L = lattice()            
-
-
-
-
-    
->>>>>>> 6ad484237a9b3e569f060c0805f4ca96d22f5bfd
+        L = lattice()
