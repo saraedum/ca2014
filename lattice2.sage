@@ -8,10 +8,8 @@ from sage.modules.free_module_integer import IntegerLattice
 # Uebergabeparameter: Ring der p-adischen Zahlen, Liste aller PZ ohne p
 # Rueckgabe: geordnete Liste der PZ
 def maxPr(ZpCA_p, L):
-    L_p = []
-    L_p= [(ZpCA_p(p_i).log().abs(), p_i) for p_i in L]
-    L_p.sort()
-    return [pL for q,pL in L_p] 
+    L.sort(key=lambda q: -ZpCA_p(q).log().valuation())
+    return L
 
 # Uebergabeparameter: Ring der p-adischen Zahlen, geordnete Liste aller PZ ohne p
 # Rueckgabe: Liste der theta_i
