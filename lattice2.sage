@@ -48,7 +48,7 @@ def test(x,S,p):
     return is_unit__(1-u,S+[p])
 
 def findSolution(S, M, num_shortest_vectors):
-    ret = []
+    ret = set([])
     for p_i in S:
         print "p_i:", p_i
         for m in range(1,M+1):
@@ -62,7 +62,7 @@ def findSolution(S, M, num_shortest_vectors):
             for s in L.shortest_vectors(num_shortest_vectors):
                 if test(s,L_P,p_i):
                     print ".",
-                    ret.append((toRat(s,L_P),1-toRat(s,L_P)))
+                    ret.add((toRat(s,L_P),1-toRat(s,L_P)))
             print ""
     print "Found %s solutions."%len(ret)
     if len(ret):
