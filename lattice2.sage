@@ -18,8 +18,8 @@ def maxPr(ZpCA_p, L):
 def theta_i(ZpCA_p,S):
     return [(ZpCA_p(pl).log()/ZpCA_p(S[-1]).log()).lift() for pl in S if pl!=S[-1]]
 
-# Uebergabeparameter: Approximationsschranke, Liste der theta_i
-# Rueckgabe: theta_im
+# Uebergabeparameter: Approximationsschranke m, Liste der theta_i
+# Rueckgabe: Liste der theta_im
 def approx(Ti):
     Ti = [(t_i.lift()) for t_i in Ti]
     return Ti
@@ -28,10 +28,15 @@ def getVector(entry, posOf1, size):
     v=[0 for i in range(size)]
     v[posOf1]=1
     v[-1]=entry
+    print v
     return v
 
-def lattice(p,m,S):
-    L=[getVector(S[i],i,len(S)+1) for i in range(len(S))]+[getVector(p^m,len(S),len(S)+1)]
+# Uebergabeparameter: p, Approximationsschranke m, Liste der theta_im
+# Rueckgabe: Gitter Gamma_m
+# Gitter.vector_space()([1,0,81]) in Gitter
+def lattice(p,m,theta_im):
+    r=len(theta_im)+1
+    L=[getVector(theta_im[i],i,r) for i in range(r-1)]+[getVector(p^m,-1,r)]
     return IntegerLattice(L)
     
 def toInt(x,S):
