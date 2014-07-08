@@ -7,6 +7,7 @@ def prime_factors(N):
 
 def is_unit(x,S):
     if x==0: return False
+    x = QQ(x)
     n=x.numerator()
     H=prime_factors(n)
     for p in H:
@@ -19,6 +20,7 @@ def is_unit(x,S):
 
 def is_unit_(x,S):
     if x==0: return False;    
+    x = QQ(x)
     d=x.denominator();
     for s in S:
         while d%s==0:
@@ -28,6 +30,12 @@ def is_unit_(x,S):
         while n%s==0:
             n/=s;
     return d==1 and (n==1 or n==-1)
+
+def is_unit__(x,S):
+    x = QQ(x)
+    if x==0: return False
+    S = prod(S)
+    return x.numerator().prime_to_m_part(S).abs()==1 and x.denominator().prime_to_m_part(S).abs()==1
 
 def units(S):
     pass
