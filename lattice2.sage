@@ -26,7 +26,6 @@ def getVector(entry, posOf1, size):
     v=[0 for i in range(size)]
     v[posOf1]=1
     v[-1]=entry
-    print v
     return v
 
 # Uebergabeparameter: p, Approximationsschranke m, Liste der theta_im
@@ -49,20 +48,16 @@ def test(x,S,p):
     return is_unit__(1-u,S+[p])
 
 def findSolution(S, M, num_shortest_vectors):
-    L_P = []
     for p_i in S:
         print "p_i:", p_i
-        m=1
-        while m<=M:
+        for m in range(1,M+1):
             ZpCA_p = ZpCA(p_i,m)
+            if any([ZpCA_p(q).log().is_zero() for q in S if q != p_i]):
+                continue
             print "    m:", m
             L_P = maxPr(ZpCA_p, [q for q in S if q != p_i])
-            #Theta_im = approx(m,theta_i(L_P))
             Theta_im = theta_i(ZpCA_p,L_P)
             L = lattice(p_i,m,Theta_im)
             for s in L.shortest_vectors(num_shortest_vectors):
                 if test(s,L_P,p_i):
                     print toInt(s,L_P)
-            m+=1
-            
-            
