@@ -46,7 +46,7 @@ def findSolution(S, M, num_shortest_vectors):
     for p_i in S:
         print "p_i:", p_i
         for m in range(1,M+1):
-            ZpCA_p = ZpCA(p_i,m)
+            ZpCA_p = ZpCR(p_i,m)
             if any([ZpCA_p(q).log().is_zero() for q in S if q != p_i]):
                 continue
             print "    m:", m,
